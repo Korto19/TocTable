@@ -1,6 +1,6 @@
 # TocTable
 ## Qgis Plugin per processing
-LQuesto algoritmo recupera alcuni metadati e proprietà dei layer del progetto e li raccoglie in una tabella così da poterli inserire nelle stampe. Tiene traccia dell'ordine dei layer nel progetto e degli eventuali gruppi
+Recupera alcuni metadati e proprietà dei layer del progetto e li inserisce in una tabella così da poterli utilizzare come riferimenti. Tiene anche traccia dell'ordine dei layer nel progetto e degli eventuali gruppi
 
 
 ### Installazione
