@@ -5,12 +5,15 @@
 [general]
 name=TocTable
 qgisMinimumVersion=3.0
-description=Tabella con i contenuti della TOC
+description=Produces a table with the TOC contents - Genera una tabella con i contenuti della TOC
 version=1.0
 author=Giulio Fattori
 email=giulio.fattori@tin.it
 
-about=Produce una tabella riepilogativa con i dati ed i metadati dei layer del progetto
+about=
+    Produces a summary table with data and metadata of the project layers (not all but the most significant ones)
+
+    Produce una tabella riepilogativa con i dati ed i metadati dei layer del progetto (non tutti ma i più significativi)
 
 tracker=https://github.com/Korto19/TocTable/issues
 repository=https://github.com/Korto19/TocTable
@@ -25,7 +28,7 @@ hasProcessingProvider=yes
 # Tags are comma separated with spaces allowed
 tags=python
 
-homepage=https://github.com/Korto19
+homepage=https://github.com/Korto19/TocTable#toctable
 category=Processing, script
 icon=icon.png
 # experimental flag
