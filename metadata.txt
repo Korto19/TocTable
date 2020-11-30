@@ -6,7 +6,7 @@
 name=TocTable
 qgisMinimumVersion=3.0
 description=Produces a table with the TOC contents - Genera una tabella con i contenuti della TOC
-version=1.1
+version=1.2
 author=Giulio Fattori
 email=giulio.fattori@tin.it
 
