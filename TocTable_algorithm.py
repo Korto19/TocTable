@@ -43,6 +43,7 @@ from qgis.core import (QgsProcessing,
 					   QgsLayerTreeLayer,
 					   QgsProcessingException,
                        QgsProcessingAlgorithm,
+					   QgsProcessingParameterEnum,
 					   QgsProcessingParameterField,
                        QgsProcessingParameterFeatureSource,
                        QgsProcessingParameterFeatureSink)
@@ -52,6 +53,9 @@ import datetime
 import os
 import inspect
 from qgis.PyQt.QtGui import QIcon
+
+fields_list = ['Layer_N','Layer_Group_Level','Layer_Storage','Layer_Name','Geometry_Not_Valid','Layer_Crs','Layer_Type','Layer_Type_Name','Layer_Source','Raster_type','Raster_data_type','Raster_Info_dim','Raster_extent','Raster_Info_res','Raster_NoDataValue','Layer_Feature_Count','Layer_Meta_Parent_Id','Layer_Meta_Identifier','Layer_Meta_Title','Layer_Meta_Type','Layer_Meta_Language','Layer_Meta_Abstract']
+default_fields = ','.join(str(e) for e in list(range(len(fields_list))))
 
 class TocTableAlgorithm(QgsProcessingAlgorithm):
     """
@@ -143,10 +147,13 @@ class TocTableAlgorithm(QgsProcessingAlgorithm):
         )
 
         self.addParameter(
-            QgsProcessingParameterField(
+            #QgsProcessingParameterField(
+            QgsProcessingParameterEnum(
                 self.INPUT_F,
                 self.tr('Campi da inserire nella TocTable'),
-                'Layer_N;Layer_Group_Level;Layer_Storage;Layer_Name;Geometry_Not_Valid;Layer_Crs;Layer_Type;Layer_Type_Name;Layer_Source;Raster_type;Raster_data_type;Raster_Info_dim;Raster_extent;Raster_Info_res;Raster_NoDataValue;Layer_Feature_Count;Layer_Meta_Parent_Id;Layer_Meta_Identifier;Layer_Meta_Title;Layer_Meta_Type;Layer_Meta_Language;Layer_Meta_Abstract',
+                #'Layer_N;Layer_Group_Level;Layer_Storage;Layer_Name;Geometry_Not_Valid;Layer_Crs;Layer_Type;Layer_Type_Name;Layer_Source;Raster_type;Raster_data_type;Raster_Info_dim;Raster_extent;Raster_Info_res;Raster_NoDataValue;Layer_Feature_Count;Layer_Meta_Parent_Id;Layer_Meta_Identifier;Layer_Meta_Title;Layer_Meta_Type;Layer_Meta_Language;Layer_Meta_Abstract',
+                options = fields_list,
+                defaultValue = default_fields,
                 allowMultiple = True
             )
         )
@@ -156,11 +163,14 @@ class TocTableAlgorithm(QgsProcessingAlgorithm):
         Here is where the processing itself takes place.
         """
         
-        i_fields = self.parameterAsMatrix(
+        #i_fields = self.parameterAsMatrix(
+        fields_enums = self.parameterAsEnums(
             parameters,
             self.INPUT_F,
             context)
         
+        i_fields = [fields_list[i] for i in fields_enums]
+		
         #CREA TABELLA CONTENUTI PROGETTO
         #per altri campi occorre vedere quali si serve aggiungere
         
