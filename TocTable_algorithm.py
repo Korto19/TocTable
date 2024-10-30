@@ -270,8 +270,8 @@ class TocTableAlgorithm(QgsProcessingAlgorithm):
                     Raster_extent = layer.extent().toString()
                     provider = layer.dataProvider()
                     
-                    gpx = layer.rasterUnitsPerPixelX()
-                    gpy = layer.rasterUnitsPerPixelY()
+                    gpx = int(layer.rasterUnitsPerPixelX())
+                    gpy = int(layer.rasterUnitsPerPixelY())
                     block = provider.block(1, layer.extent(),  gpy, gpx)
                     for band in range(1, layer.bandCount()+1):
                         #print('Band ', band, layer.dataProvider().sourceNoDataValue(band))
